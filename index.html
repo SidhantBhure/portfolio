@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Introduction Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      color: #2c3e50;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Georgia', serif;
+      color: #0d47a1;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      border-bottom: 3px dashed #0288d1;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+    }
+
+    img[alt="Sidhant Bhure"] {
+      height: 220px;
+      width: 170px;
+      border-radius: 15px;
+      border: 4px double #0288d1;
+      display: block;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    img[alt="Sidhant Bhure"]:hover {
+      transform: rotate(-2deg) scale(1.05);
+    }
+
+    ul {
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      padding-left: 25px;
+      background: #f9f9f9;
+      border-left: 5px solid #0288d1;
+      padding: 15px 20px;
+      border-radius: 8px;
+    }
+
+    .gallery {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 130px;
+      margin: 12px;
+      border: 3px dashed #0077b6;
+      border-radius: 12px;
+      transition: all 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.15) rotate(2deg);
+      border-color: #00b4d8;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      display: block;
+      margin: 25px auto;
+      padding: 12px 28px;
+      background-image: linear-gradient(to right, #0288d1, #00acc1);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-image: linear-gradient(to right, #01579b, #00796b);
+      transform: scale(1.05);
+    }
+
+    table {
+      width: 85%;
+      margin: 25px auto;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th {
+      background-color: #00796b;
+      color: white;
+      padding: 14px;
+      font-size: 1.1rem;
+    }
+
+    td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    form {
+      width: 65%;
+      margin: 40px auto;
+      padding: 25px;
+      background-color: #f1f8e9;
+      border-left: 5px solid #7cb342;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    form label {
+      font-weight: bold;
+      color: #33691e;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input[type="submit"] {
+      background-color: #558b2f;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #33691e;
+    }
+
+    #output {
+      display: none;
+      width: 65%;
+      margin: 25px auto;
+      padding: 18px;
+      background-color: #e8f5e9;
+      border-left: 6px solid #66bb6a;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 1.05rem;
+    }
+
+    #more {
+      display: none;
+    }
+  </style>
+
+  <script>
+    function showMore() {
+      var moreText = document.getElementById("more");
+      var button = document.getElementById("myButton");
+
+      if (moreText.style.display === "none") {
+        moreText.style.display = "block";
+        button.innerHTML = "Show less";
+      } else {
+        moreText.style.display = "none";
+        button.innerHTML = "Show more";
+      }
+    }
+
+    function displayDetails(event) {
+      event.preventDefault();
+      let name = document.getElementById("name").value;
+      let classVal = document.getElementById("class").value;
+      let rollNo = document.querySelector('input[name="roll"]:checked')?.value;
+
+      if (name && classVal && rollNo) {
+        document.getElementById("output").style.display = "block";
+        document.getElementById("output").innerHTML = `
+          <h3>Submitted Info</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Class:</strong> ${classVal}</p>
+          <p><strong>Roll No:</strong> ${rollNo}</p>
+        `;
+      } else {
+        alert("Please fill in all fields!");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome to My Introduction Page</h1>
+  <img src="WhatsApp Image 2025-04-22 at 18.53.08_b9c83232.jpg" alt="Sidhant Bhure">
+
+  <h2>Personal Information</h2>
+  <p style="text-align:center;"><strong>Name:</strong> Sidhant Bhure</p>
+  <p style="text-align:center;"><strong>Education:</strong> B.Tech in Electronics & Computer Engineering, WIT Solapur</p>
+
+  <h2>Academic Skills</h2>
+  <ul>
+    <li>Languages: C, C++, Java, Python</li>
+    <li>Web Technologies: HTML5, CSS3, JavaScript</li>
+    <li>Tools: Git, VS Code</li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+    <li>Online Quiz System</li>
+    <li>Scientific Calculator</li>
+    <li>Weather App using API</li>
+  </ul>
+
+  <h2>Subjects Learned</h2>
+  <ul>
+    <li>Data Structures and Algorithms (DSA)</li>
+    <li>Database Management System (DBMS)</li>
+    <li>Operating System (OS)</li>
+    <li>Computer Networks</li>
+  </ul>
+
+  <h2>Hobbies</h2>
+  <ul>
+    <li>Reading Books</li>
+    <li>Drawing & Painting</li>
+    <li>Coding</li>
+    <li>Playing Badminton</li>
+  </ul>
+
+  <h2>Certificates & Photos</h2>
+  <div class="gallery">
+    <img src="certificate1.jpg" alt="Certificate 1">
+    <img src="certificate2.jpg" alt="Certificate 2">
+  </div>
+
+  <button id="myButton" onclick="showMore()">Show more</button>
+
+  <div id="more">
+    <h2>Academic Qualification</h2>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Exam Board</th>
+        <th>Year of Passing</th>
+        <th>Percent/CGPA</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>SSC</td>
+        <td>2021</td>
+        <td>84.0%</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>HSC</td>
+        <td>2023</td>
+        <td>78%</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Submit Your Details</h2>
+  <form onsubmit="displayDetails(event)">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" required><br>
+
+    <label for="class">Class:</label><br>
+    <input type="text" id="class" required><br>
+
+    <label>Roll No:</label><br>
+    <input type="radio" name="roll" value="35"> 35<br>
+    <input type="radio" name="roll" value="36"> 36<br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="output"></div>
+
+</body>
+</html>
